@@ -7,6 +7,10 @@ public class Fraction {
     public Fraction(int numerator, int denominator) {
         this.numerator = numerator;
         this.denominator = denominator;
+        if (numerator <0 && denominator <0){
+            this.numerator = -this.numerator;
+            this.denominator = -this.denominator;
+        }
         if (denominator == 0){
             throw new ArithmeticException();
         }

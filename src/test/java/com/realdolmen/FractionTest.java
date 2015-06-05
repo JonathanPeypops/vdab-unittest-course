@@ -24,7 +24,7 @@ public class FractionTest {
     }
 
     @Test
-    public void testtoString() throws Exception {
+    public void testToString() throws Exception {
         Fraction fraction = new Fraction(5,10);
         assertEquals("1/2",fraction.toString());
     }
