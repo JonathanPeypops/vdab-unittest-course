@@ -17,15 +17,26 @@ public class Fraction {
         return denominator;
     }
 
-    public int Numerator(){
-        return numerator;
+    public String simplify() {
+        int common = Utilities.greatestCommonFactor(numerator, denominator);
+        return (numerator / common) + "/" + (denominator / common);
+
     }
 
-    public int Denominator(){
-        return denominator;
+    public String toString() {
+        return numerator + "/" + denominator;
     }
 
-    public void simplify(){
+    public double asDouble() {
+        return ((double) numerator / (double) denominator);
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
