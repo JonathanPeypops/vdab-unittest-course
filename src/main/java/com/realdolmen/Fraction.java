@@ -7,6 +7,10 @@ public class Fraction {
     public Fraction(int numerator, int denominator) {
         this.numerator = numerator;
         this.denominator = denominator;
+        if (denominator == 0){
+            throw new ArithmeticException();
+        }
+        simplify();
     }
 
     public int getNumerator() {
@@ -17,10 +21,10 @@ public class Fraction {
         return denominator;
     }
 
-    public String simplify() {
+    private void simplify() {
         int common = Utilities.greatestCommonFactor(numerator, denominator);
-        return (numerator / common) + "/" + (denominator / common);
-
+        this.numerator = numerator / common;
+        this.denominator = denominator / common;
     }
 
     public String toString() {
@@ -33,10 +37,25 @@ public class Fraction {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        } else {
-            return false;
-        }
+        Fraction that = (Fraction)o;
+        return this.numerator == that.numerator && this.denominator == that.denominator;
+    }
+
+    public Fraction reciprocal(){
+        int newdenominator =  this.numerator;
+        int newnumerator = this.denominator;
+        return new Fraction(newnumerator,newdenominator);
+    }
+
+    public Fraction multiply(Fraction that){
+        int newnumerator = this.numerator*that.numerator;
+        int newdenominator = this.denominator*that.denominator;
+        return new Fraction (newnumerator,newdenominator);
+    }
+
+    public Fraction divide(Fraction that){
+        int newnumerator = this.numerator * that.denominator;
+        int newdenominator = this.denominator * that.numerator;
+        return new Fraction(newnumerator,newdenominator);
     }
 }
